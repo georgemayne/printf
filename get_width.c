@@ -1,4 +1,5 @@
 #include "main.h"
+#include <ctype.h>
 /**
  * get_width - Calculates the width for printing
  * @format: Formatted string
@@ -13,7 +14,7 @@ int get_width(const char *format, int *g, va_list list)
 
 	for (curr_g = *g + 1; format[curr_g] != '\0'; curr_g++)
 	{
-		if (is_digit(format[curr_g]))
+		if (isdigit(format[curr_g]))
 		{
 			width *= 10;
 			width += format[curr_g] - '0';
