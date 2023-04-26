@@ -4,15 +4,14 @@
  * print_bigS - this function prints non printable characters
  * (0 < ASCII value < 32 or >= 127) are
  * printed this way: \x, followed by the ASCII code
- * value in hexadecimal (upper case - always 2 characters)
- * @l: the va_list arguments from _printf
- * @f: pointer to the struct flags that tells
- * if a flag is passed to _printf
+ * value in hexadecimal
+ * @l: the va_list arguments
+ * @f: pointer
  * Return: the number of characters to be printed
  */
 int print_bigS(va_list l, flags_t *f)
 {
-	int i, count = 0;
+	int g, count = 0;
 	char *res;
 	char *s = va_arg(l, char *);
 
@@ -20,19 +19,19 @@ int print_bigS(va_list l, flags_t *f)
 	if (!s)
 	return (_puts("(null)"));
 
-	for (i = 0; s[i]; i++)
+	for (g = 0; s[g]; g++)
 	{
-	if (s[i] > 0 && (s[i] < 32 || s[i] >= 127))
+	if (s[g] > 0 && (s[g] < 32 || s[g] >= 127))
 	{
 	_puts("\\x");
 	count += 2;
-	res = convert(s[i], 16, 0);
+	res = convert(s[g], 16, 0);
 	if (!res[1])
 	count += _putchar('0');
 	count += _puts(res);
 	}
 	else
-	count += _putchar(s[i]);
+	count += _putchar(s[g]);
 	}
 	return (count);
 }
@@ -46,20 +45,20 @@ int print_bigS(va_list l, flags_t *f)
  */
 int print_rev(va_list l, flags_t *f)
 {
-	int i = 0, j;
+	int g = 0, j;
 	char *s = va_arg(l, char *);
 
 	(void)f;
 	if (!s)
 	s = "(null)";
 
-	while (s[i])
-	i++;
+	while (s[g])
+	g++;
 
-	for (j = i - 1; j >= 0; j--)
+	for (j = g - 1; j >= 0; j--)
 	_putchar(s[j]);
 
-	return (i);
+	return (g);
 }
 
 /**
